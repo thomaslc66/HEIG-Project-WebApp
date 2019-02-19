@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const passwords = require("./password");
+const passwords = require('./password');
 
 const schema = new Schema(
   {
@@ -12,9 +12,8 @@ const schema = new Schema(
       }
     },
     name: String,
-    adress: String,
+    url: String,
     logo: String,
-    login: String,
     passwords: [passwords.schema],
     tags: Array
   },
@@ -24,4 +23,4 @@ const schema = new Schema(
   }
 );
 
-module.exports = mongoose.model("fournisseur", schema);
+module.exports = mongoose.model('fournisseur', schema);

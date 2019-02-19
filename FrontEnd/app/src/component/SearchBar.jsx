@@ -1,12 +1,18 @@
-import React, { Component } from "react";
-import AutoSuggest from "react-autosuggest";
-import Axios from "axios";
+import React, { Component } from 'react';
+import AutoSuggest from 'react-autosuggest';
+import Axios from 'axios';
+
+const getSuggestionValue = suggestion => suggestion.name;
+
+const renderSuggestion = suggestion => (
+  <div className='resultat'>{suggestion.name}</div>
+);
 
 class SearchBar extends Component {
   constructor() {
     super();
     this.state = {
-      value: "",
+      value: '',
       suggestions: []
     };
   }
@@ -23,16 +29,12 @@ class SearchBar extends Component {
         );
   };
 
-  getSuggestionValue = suggestion => suggestion.name;
-
-  renderSuggestion = suggestion => <div>{suggestion.name}</div>;
-
   //call axios
   onChange = (event, { newValue }) => {
     Axios.get(`http://localhost:4000/suppliers/tag/${newValue}`).then(
       response => {
         this.setState({
-          suggestions: response
+          suggestions: response.data
         });
       }
     );
@@ -53,6 +55,10 @@ class SearchBar extends Component {
     });
   };
 
+  displayResults = () => {
+    return <div>hello</div>;
+  };
+
   render() {
     const { value, suggestions } = this.state;
 
@@ -63,15 +69,15 @@ class SearchBar extends Component {
     };
 
     return (
-      <div>
+      <div className='searchBar'>
         <AutoSuggest
-          className="searchBar"
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={this.renderSuggestion}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
           inputProps={inputProps}
+          onSuggestionSelected={this.displayResults}
         />
       </div>
     );
