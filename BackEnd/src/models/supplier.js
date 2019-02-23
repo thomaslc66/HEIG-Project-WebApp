@@ -6,10 +6,7 @@ const passwords = require('./password');
 const schema = new Schema(
   {
     id: {
-      type: String,
-      index: {
-        unique: true
-      }
+      type: String
     },
     name: String,
     url: String,
