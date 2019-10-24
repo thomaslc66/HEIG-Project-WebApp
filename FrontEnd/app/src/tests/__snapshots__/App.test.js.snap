@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render InfoRow Component without crashing 1`] = `
+<tr
+  className="tr_info_style"
+>
+  <td
+    className="td_info_contact"
+  >
+    <i
+      className="fa fa-circle fa-lg icon text-undefined"
+    />
+    <div
+      className="list_input"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <input
+        onChange={[Function]}
+        style={
+          Object {
+            "boxSizing": "content-box",
+            "width": "1px",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "height": 0,
+            "left": 0,
+            "overflow": "scroll",
+            "position": "absolute",
+            "top": 0,
+            "visibility": "hidden",
+            "whiteSpace": "pre",
+          }
+        }
+      >
+        
+      </div>
+    </div>
+    <i
+      className="far fa-clone icon_clone text-muted"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    />
+    <span
+      className="info_error"
+    />
+  </td>
+</tr>
+`;
+
+exports[`Render correctly Row component 1`] = `
+Array [
+  <div
+    className="list_input"
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <input
+      style={
+        Object {
+          "boxSizing": "content-box",
+          "width": "1px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "height": 0,
+          "left": 0,
+          "overflow": "scroll",
+          "position": "absolute",
+          "top": 0,
+          "visibility": "hidden",
+          "whiteSpace": "pre",
+        }
+      }
+    >
+      
+    </div>
+  </div>,
+  <span
+    className="info_error"
+  />,
+]
+`;

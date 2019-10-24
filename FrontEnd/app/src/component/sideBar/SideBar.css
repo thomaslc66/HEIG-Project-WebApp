@@ -1,0 +1,21 @@
+/* SideBar */
+.client_name_sideBar {
+  font-size: x-small;
+}
+
+.sideBar .btn {
+  padding: 15px;
+}
+
+.force-scroll {
+  overflow-y: scroll;
+  height: 400px;
+}
+
+/* SideBar DO NOT MOVE */
+@media (max-width: 1010px) /*small*/ {
+  .sideBar .btn {
+    font-size: x-small;
+    padding: 9px;
+  }
+}

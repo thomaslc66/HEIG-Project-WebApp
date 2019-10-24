@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  height: 100%;
+  min-width: 435px;
+  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+}
+
+.Side-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+/**/
+
+/******************* Custom styles ******************/
+/* Override of default css style */
+:focus {
+  outline: auto 0px;
+}
+
+.table {
+  margin-bottom: 0rem;
+}
+
+.md-form .form-control:disabled,
+.md-form .form-control[readonly] {
+  border-bottom: 0px solid #bdbdbd;
+  background-color: transparent;
+}
+
+.md-from {
+  position: relative;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.input_date_picker {
+  width: 125px;
+}
+
+/* Table List */
+.table.table .td_info_contact {
+  border: 0px transparent;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.table.table td {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+input:focus {
+  color: black;
+}
+
+input:disabled {
+  color: black;
+  border: 1px transparent;
+  background-color: transparent;
+}
+
+/* Display of all suggestions */
+.icon {
+  margin: 15px 20px 15px 10px;
+}
+
+.icon_clone_hover {
+  margin: 3px 0px 10px 7px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.icon_clone {
+  margin: 3px 0px 14px 10px;
+}
+
+.icon_trash_hover {
+  margin: 3px 0px 10px 6x;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.icon_trash {
+  margin: 3px 0px 13px 10px;
+}
+
+/* Title and logo style */
+.supplier {
+  border: 1px solid;
+  margin: 20px;
+}
+
+.icon_note {
+  margin-right: 10px;
+}
+
+.supp_icon {
+  width: 80px;
+  height: 80px;
+  text-align: left;
+}
+
+/* margin between first row and contact info*/
+.horizontal_bar_margin {
+  margin-bottom: 17px;
+}
+
+/* contact information table */
+.infoTable {
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.info_error {
+  margin-left: 8px;
+  color: red;
+}
+
+.td_info_contact {
+  border-top: 0px solid;
+}
+
+.tr_info_style {
+  text-align: left;
+  padding-top: 1px;
+}
+
+.left_info_align {
+  margin-left: 20px;
+}
+
+.display_info_inline {
+  font-size: smaller;
+  display: inline;
+}
+
+/* password margin top (separation with info table)*/
+.password_title {
+  margin-top: 0px;
+}
+
+/* Edition Button Style (delete and edit buttons) */
+.edition_button {
+  position: absolute;
+  right: 40px;
+  bottom: 30px;
+}
+
+.switchEdit {
+  margin-top: 10px;
+}
+
+/* on edit switch */
+.edit[contenteditable='true'] {
+  border-bottom: 1px solid #5a95f5;
+}
+
+/* credential list and licences list */
+
+.icon_program {
+  margin: 0px -6px 0px 10px;
+}
+
+.list_input:focus {
+  border: 0px solid;
+}
+
+.list_input_error {
+  border: 2px solid red;
+}

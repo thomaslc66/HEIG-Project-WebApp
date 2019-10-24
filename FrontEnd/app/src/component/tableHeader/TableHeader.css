@@ -1,0 +1,11 @@
+.font_custom th {
+  font-weight: bold;
+}
+
+.passwordTable {
+  display: inline-flex;
+}
+
+.my-table-panel {
+  margin-top: 0px;
+}

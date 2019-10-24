@@ -1,0 +1,32 @@
+.navBar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 90px;
+}
+
+.supp_client_btn {
+  display: grid;
+}
+
+.add_icon {
+  margin-right: 8px;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestionRow {
+  margin-top: 45px;
+  padding: 10px;
+  padding-bottom: 90px;
+}
+
+.myContainer {
+  min-height: 100%;
+}
