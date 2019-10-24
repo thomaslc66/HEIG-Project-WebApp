@@ -1,8 +1,6 @@
 SECURE - REACT PROJET HEIG-VD - THOMAS LECHAIRE 2019
 
 
-![alt text](https://raw.githubusercontent.com/thomaslc66/secure/master/screen_supplier.png)
+![Supplier](https://github.com/thomaslc66/secure/blob/master/screen_supplier.png)
 
-![alt text](https://raw.github.com/thomaslc66/secure/master/screen_client.png)
-
-
+![Client](https://raw.githubusercontent.com/thomaslc66/secure/master/screen_supplier.png)
