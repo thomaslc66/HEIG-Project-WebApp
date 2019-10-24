@@ -1,9 +1,11 @@
 // const Schema = require('./src/User.js');
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 // To Avoid findAndModify is deprecated
-mongoose.set("useFindAndModify", false);
+mongoose.set('useFindAndModify', false);
 // To Avoid collection.ensureIndex is deprecated is deprecated
-mongoose.set("useCreateIndex", true);
+mongoose.set('useCreateIndex', true);
+const config = require('../utils/config');
+const DUP_KEY_ERROR = 11000;
 
 /**
  * Database features
@@ -12,14 +14,15 @@ mongoose.set("useCreateIndex", true);
  */
 class DataBase {
   constructor() {
-    this.dbName = process.env.DB_NAME;
-    this.dbUrl = process.env.DB_URL;
+    if (process.env.NODE_MODE != 'test') {
+      this.dbUrl = `${config.db.host}${config.db.port}${config.db.name}`;
+    } else {
+      this.dbUrl = `${config.db.host}${config.db.port}/test`;
+    }
     this.db = null;
-
     this.connect = this.connect.bind(this);
     this.close = this.close.bind(this);
     this.clear = this.clear.bind(this);
-    this.saveInDB = this.saveInDB.bind(this);
   }
 
   /**
@@ -28,32 +31,49 @@ class DataBase {
    * @memberof DataBase
    */
   connect() {
-    mongoose.connect(
-      `${this.dbUrl}/${this.dbName}`,
-      {
-        useNewUrlParser: true
-      }
-    );
-
-    this.db = mongoose.connection;
-
-    this.db.once("close", () => {
-      console.log("Disconnected from DB");
+    mongoose.connect(this.dbUrl, {
+      useNewUrlParser: true,
     });
-    /* istanbul ignore next */
-    this.db.on("error", () => {
-      console.error.bind(console, "Connection error: ");
-      this.close();
+
+    mongoose.Promise = global.Promise;
+    const me = this;
+
+    // CONNECTION EVENTS
+    // When successfully connected
+    mongoose.connection.on('connected', function(err, db) {
+      console.log('Mongoose default connection open to ' + me.dbUrl);
     });
-    this.db.once("open", () => {
-      console.log("Connected to DB => OK");
+
+    // If the connection throws an error
+    mongoose.connection.on('error', function(err) {
+      console.log(
+        'Mongoose default connection to ' + me.dbUrl + ' error: ' + err
+      );
+    });
+
+    // When the connection is disconnected
+    mongoose.connection.on('disconnected', function() {
+      console.log('Mongoose default connection disconnected');
+    });
+
+    mongoose.connection.on('open', () => {
+      console.log('Connected to DB => OK');
+    });
+
+    // If the Node process ends, close the Mongoose connection
+    process.on('SIGINT', function() {
+      mongoose.connection.close(function() {
+        console.log(
+          'Mongoose default connection disconnected through app termination'
+        );
+        process.exit(0);
+      });
     });
   }
 
   /**
    * Use for test purpose to close the connection
    *
-   * @returns A Promise which you can catch the saved book with a then()
    * @memberof DataBase
    */
   close() {
@@ -63,22 +83,10 @@ class DataBase {
   /**
    * Clear the database - for test purpose
    *
-   * @returns A Promise which you can catch the saved book with a then()
    * @memberof DataBase
    */
   clear() {
     return this.db.dropDatabase();
-  }
-
-  /**
-   * Save the value in DB
-   *
-   * @param {*} value The value to save
-   * @returns A Promise which you can catch the saved book with a then()
-   * @memberof DataBase
-   */
-  saveInDB(value) {
-    return value.save();
   }
 }
 
@@ -86,5 +94,5 @@ const db = new DataBase({});
 
 module.exports = {
   db,
-  DataBase
+  DataBase,
 };
